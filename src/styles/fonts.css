@@ -28,9 +28,6 @@ body, html, button, a, input, textarea, .bullets, .simple-bullets{
 .footer-nav-links {
     font-size: 0.9em;
 }
-.menu-toggle {
-    font-size: 0.8vw;
-}
 
 /* ============================================================================================================ */
 /* BASE CONTENT */
@@ -85,15 +82,16 @@ p.thanks-msg{
     /* ============================================================================================================ */
     /* HEADER*/
     /* ============================================================================================================ */
-    .nav-links a, .footer-nav-links a{
-        font-size: 1.3em;
-        font-weight: 400;
-    }.nav-links a:hover, .footer-nav-links a:hover {
-        border: none !important;
+    .nav-links a{
+        font-size: 1em;
+        font-weight: 300;
     }
-    .menu-toggle {
-        z-index: 8;
-        font-size: 2em;
+    .footer-nav-links a {
+        font-size: 1.5em;
+        font-weight: 300;     
+    }
+    .nav-links a:hover, .footer-nav-links a:hover {
+        border: none !important;
     }
 
     /* ============================================================================================================ */

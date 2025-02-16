@@ -46,7 +46,7 @@ header {
 .navbar {
  
     display: flex;
-    align-items:flex-start;
+    align-items: baseline;
 
     transform: translateY(0) scale(1);
     height: auto;
@@ -63,8 +63,7 @@ header {
 /* Container that holds the logo and navigation buttons, row is to ensure they stay side by side not stacked on top */
 /* ===================================================== */
 .nav-container{
-    display: flex;
-    flex-direction: row;
+    width: -webkit-fill-available;
 }
 /* Container that holds the logo */
 .homelink{
@@ -76,7 +75,7 @@ header {
 }*/
 /* When on every page other than home, it's smaller */
 .logo-image{
-    width: 18vw;
+    height: 10vh;
 }
 /* ===================================================== */
 /* The navigation menu buttons container for the header and footer in their respective order */
@@ -91,7 +90,6 @@ header {
     margin: 0;
 }
 .nav-links{
-    width: 72vw; /* Width just before end of screen in x-axis */
     justify-content: end;
 }
 .footer-nav-links{
@@ -109,9 +107,6 @@ header {
     border-color: #4a4a4a93;
     background-color: #dbcbcb2e; /* Background color for header menu buttons only */
 } 
-.nav-button.active {
-    border-bottom: 2px solid #fff; /* Underline for whichever header button is selected */
-}
 .footer-nav-links a{
     border-style: none;
     background-color: #00000000;
@@ -147,6 +142,10 @@ ul.footer-nav-links li:not(:last-child)::after {
     display: none;
     background: none;
     border: none;
+    border-radius: 5px;
+    background: #11516868;
+    box-shadow: 3px 3px 6px hsl(0deg 0% 0% / 0.60);
+    background-color: #333;
     cursor: pointer;
 }
 /* ===================================================== */
@@ -336,8 +335,8 @@ footer {
     border-radius: 3px;
 
     box-shadow: 1.8px 3.7px 3.7px hsl(0deg 0% 0% / 0.44);
-} .main.title-container, .bullets {
-    background-color: #115168df;
+} .title-container, .bullets, .simple-bullets {
+    background-color: #0e44574d;
 }
 /* ===================================================== */
 /* Container for all bullet points */
@@ -374,17 +373,17 @@ li {
     .navbar {
         padding: 5px 20px;
         background: #050505bb;
-        justify-content: right;
         align-items: center;
-    }
-    .home-page header .logo-image, .logo-image{
-        width: 80%; /* Adjusting logo size for smaller screens*/
     }
     /* No more down button */
     .home-page .down-container{
         display: none;
     }
     /* Removing menu buttons, adjusting styles to fit in a box for the drop down */
+    .nav-container {
+        display: flex;
+        justify-content: right;
+    }
     .nav-links {
         display: none;
         flex-direction: column;
@@ -408,11 +407,6 @@ li {
         background-color: #ffffff00;
     }
     /* Now the menu dropdown is displayed*/
-    .menu-toggle {
-        display: block;
-        margin-right: 10vw;
-
-    }
     /* ============================================================================================================ */
     /* MAIN */
     /* ============================================================================================================ */
@@ -469,3 +463,30 @@ li {
 ::-webkit-scrollbar-thumb:hover {
     background: #696969;
 }  
+
+/* Responsive Styles */
+@media screen and (orientation: portrait) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 200px;
+        background-color: #333;
+        position: absolute;
+        top: 70px; /* Adjust based on your header height */
+        right: 20px;
+    }
+
+    .nav-links.open {
+        display: flex;
+        z-index: 1000;
+    }
+
+    .nav-links li {
+        text-align: center;
+        margin: 2px 0;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}

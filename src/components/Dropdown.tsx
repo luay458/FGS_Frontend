@@ -1,6 +1,7 @@
 // src/components/Dropdown.tsx
 import React, { useState, useRef, useEffect } from 'react';
-import './Dropdown.css';
+import { Link } from 'react-router-dom';
+import './Dropdown.css'; // Ensure this CSS file contains your existing styles
 
 const Dropdown: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,16 +25,16 @@ const Dropdown: React.FC = () => {
 
   return (
     <div className="dropdown" ref={dropdownRef}>
-      <button className="dropdown-toggle" onClick={toggleDropdown}>
+      <button className="dropdown-toggle nav-button" onClick={toggleDropdown}>
         Menu
       </button>
-      <div className={`dropdown-menu ${isOpen ? 'open' : ''}`}>
-        <ul>
-          <li><a href="/option1">Option 1</a></li>
-          <li><a href="/option2">Option 2</a></li>
-          <li><a href="/option3">Option 3</a></li>
-        </ul>
-      </div>
+      <ul className={`dropdown-menu nav-links ${isOpen ? 'open' : ''}`}>
+        <li><Link className="nav-button" to="/">Home</Link></li>
+        <li><Link className="nav-button" to="/services">Services</Link></li>
+        <li><Link className="nav-button" to="/quality-assurance">Quality Assurance</Link></li>
+        <li><Link className="nav-button" to="/about-us">About Us</Link></li>
+        <li><Link className="nav-button" to="/our-responsibility">Our Responsibility</Link></li>
+      </ul>
     </div>
   );
 };
