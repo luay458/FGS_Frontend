@@ -1,0 +1,458 @@
+/* ============================================================================================================ */
+/* GENERAL STYLES */
+/* ============================================================================================================ */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    
+    display: flex;
+    flex-direction: column;
+
+}
+header, footer {
+    z-index: 10; /* Make sure the header and footer are always above everything else */
+}
+
+/* ============================================================================================================ */
+/* HEADER AND FOOTER */
+/* ============================================================================================================ */
+header {
+    /* Making sure the header stays on top of the screen with position and z-index */
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 100; 
+    /* Background Image*/
+    background-image: url("../images/backgroundImage.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+/* ===================================================== */
+/* Ensures both containers have the same overlay to look seamless */
+.navbar, .down-container {    
+   /* Color and blur will overlay the bg image which is in header */
+   background: #050505b4;
+   backdrop-filter: blur(2px);
+}
+/* Navbar is the container that holds everything on the top of the screen */
+.navbar {
+ 
+    display: flex;
+    align-items:flex-start;
+
+    transform: translateY(0) scale(1);
+    height: auto;
+    padding: 10px;
+
+    box-shadow: 1.8px 3.7px 3.7px hsl(0deg 0% 0% / 0.44);
+}
+/* When on the home page, navbar will take up the entire screen height */
+.home-page header .navbar {
+    height: calc(75vh - 20px); /* Calculations are to account for the down button container and padding of the navbar */
+    box-shadow: none;
+}
+/* ===================================================== */
+/* Container that holds the logo and navigation buttons, row is to ensure they stay side by side not stacked on top */
+/* ===================================================== */
+.nav-container{
+    display: flex;
+    flex-direction: row;
+}
+/* Container that holds the logo */
+.homelink{
+    cursor: pointer; /* The logo image links to home, cursor should point to show this */
+}
+/* Larger logo on the homepage (top left homelink) */
+.home-page header .logo-image {
+    width: 25vw; 
+}
+/* When on every page other than home, it's smaller */
+.logo-image{
+    width: 18vw;
+}
+/* ===================================================== */
+/* The navigation menu buttons container for the header and footer in their respective order */
+/* ===================================================== */
+.nav-links, .footer-nav-links {
+    display: flex;
+    align-items: end;
+
+    list-style: none;
+    /* Removing default margins and padding from ul*/
+    padding: 0;
+    margin: 0;
+}
+.nav-links{
+    width: 72vw; /* Width just before end of screen in x-axis */
+    justify-content: end;
+}
+.footer-nav-links{
+    justify-content: center;
+    width: 100%;
+}
+/* The navigation menu buttons for the header and footer in their respective order */
+.nav-links a , .footer-nav-links a {
+    margin: 0px 5px;
+    padding: 3px 5px;
+
+    border-radius: 3px;
+}
+.nav-links a:hover {
+    border-color: #4a4a4a93;
+    background-color: #dbcbcb2e; /* Background color for header menu buttons only */
+} 
+.nav-button.active {
+    border-bottom: 2px solid #fff; /* Underline for whichever header button is selected */
+}
+.footer-nav-links a{
+    border-style: none;
+    background-color: #00000000;
+}
+/* Separator for footer nav buttons - e.g " Home | Services | About Us" */
+ul.footer-nav-links li:not(:last-child)::after {
+    content: "|";
+    margin-right: 1px; 
+    font-size: 1.5em;
+}
+/* Create a pseudo-element that will serve as the animated underlined border - will only begin animation on hover */
+.nav-button::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%) scaleX(0); /* Start with scale 0, centered horizontally */
+    transform-origin: center; /* Expand from center */
+    width: 100%; /* Full width */
+    height: 2px; /* Adjust thickness as desired */
+    background-color: #fff; /* Border color */
+    transition: transform 0.3s ease; /* Adjust timing and easing as needed */
+}
+/* On hover, animate the pseudo-element to scale to full width */
+.nav-button:hover::after {
+    transform: translateX(-50%) scaleX(1);
+}
+.nav-button {
+    position: relative; /* Makes sure the animation sticks to the button itself */
+}  
+/* Phone only - hide the menu buttons and instead display a dropdown */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+/* ===================================================== */
+/* Footer Only */
+/* ===================================================== */
+/* Centers All Containers in the footer*/
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.footer {
+    background: #1a1a1a;
+    padding: 20px;
+    text-align: center;
+}
+/* The container in footer - below the footer nav buttons */
+.footer .container {
+    display: flex;
+    justify-content: space-between;
+}
+/* ===================================================== */
+/* Each section in the footer container takes up half of the container's width - change if # items increases*/
+.footer-section {
+    width: 50%;
+}
+/* Contact Form */
+.footer form {
+    display: flex;
+}
+.contact-form{
+    max-width: 90%;
+}
+/* Separate stacked container of the name, email, and submit button */
+.submit-text-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 30%;
+    max-width: 40%;
+    margin-left: 10px;
+}
+/* ===================================================== */
+/* Text Input customization */
+.footer input, .footer textarea {
+    width: 100%;
+    padding: 5px;
+    margin: 5px;
+
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 4px 5px hsl(0deg 0% 0% / 0.40) inset;
+}
+/* Submit button*/
+.footer button {
+    padding: 10px;
+    cursor: pointer;
+    
+    border: none;
+    border-radius: 5px;
+    background: #ff6600;
+    box-shadow: 6px 6px 12.6px hsl(0deg 0% 0% / 0.90);
+}
+.footer button:hover {
+    background: #cc550074;
+}
+.thanks-msg-container {
+    display: none;
+} .thanks-msg-container.submit{
+    display: flex;
+}
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    10%, 80% { opacity: 1; }
+    100% { opacity: 0; }
+}
+/* ===================================================== */
+/* Down button image only*/
+/* ===================================================== */
+/* Container which holds the down button, takes up the remaining bottom of the screen left by header, only shows at home */
+.down-container{
+    display: none; /* Default display until home is selected */
+    justify-content: center;
+    align-items: center;
+
+    height: 20vh;
+    padding: 5vh 5vh 0 0 ;
+}
+/* Show down-container on the home page */
+.home-page .down-container {
+    display: flex;
+}
+/* The down button image, below are the animations and size of the image */
+.down-image{
+    cursor: pointer;
+    width: 5%;
+}
+@keyframes bounceAnimation {
+    0% {
+      transform: translateY(0);
+    }
+    70% {
+        transform: translateY(0);
+    }
+    78% {
+      transform: translateY(-20px); /* bounce up */
+    }
+    86% {
+      transform: translateY(0);
+    }
+    92% {
+      transform: translateY(-20px); /* second bounce up */
+    }
+    100% {
+      transform: translateY(0);
+    }
+}
+.down-image {
+    animation: bounceAnimation 5s infinite;
+}
+
+/* Thanks for contacting 
+#message-bubble {
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #dff0d8;
+    color: #3c763d;
+    padding: 10px 15px;
+    border: 1px solid #d6e9c6;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    z-index: 100;
+    opacity: 0;
+    animation: fadeInOut 5s forwards;
+}
+*/
+
+/* ============================================================================================================ */
+/* MAIN CONTENT */
+/* ============================================================================================================ */
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex: 1; /* Expand size to fill remaining area*/
+    
+    padding: 80px 20px 150px;
+    box-shadow: 3px 0px 4px hsl(0deg 0% 0% / 0.54) inset;
+}
+/* ===================================================== */
+/* Main Content Container */
+#main-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 40vw;
+    max-width: 60vw;
+
+    min-height: 20vw;
+    max-height: 100%;
+    
+    padding: 2% 4%;
+    
+    border-radius: 5px;
+    background-color: #0c0c0c07;
+    box-shadow: rgba(0, 0, 0, 0.4) 3px 4px 8px;
+}
+/* ===================================================== */
+/* Container for titles*/
+.title-container{
+    margin: 20px 0;
+    padding: 5px;
+
+    border-radius: 3px;
+
+    color: #3a3a3a;
+    background-color: #aeb6bc5c;
+    box-shadow: 1.8px 3.7px 3.7px hsl(0deg 0% 0% / 0.44);
+}
+/* ===================================================== */
+/* Container for all bullet points */
+.bullet-container{
+    max-width: 80%;
+    justify-content: center;
+    list-style:inside;
+    padding: 0;
+    margin: auto;
+}
+/* Each bullet point*/
+.bullets, .simple-bullets{
+    margin-bottom: 30px;
+    border-radius: 3px;
+    padding: 5px;
+
+    color: #3a3a3a;
+    background-color: #aeb6bc5c;
+    box-shadow: 2px 3px 5px hsl(0deg 0% 0% / 0.33) inset;
+}
+li {
+    margin-bottom: 2.5%;
+}
+
+
+
+/* Hide nav links on small screens */
+@media screen and (orientation: portrait) {
+    /* ============================================================================================================ */
+    /* HEADER */
+    /* ============================================================================================================ */
+    /* On the home page, navbar is no longer taller */
+    .home-page header .navbar {
+        height: auto;
+    }
+    .navbar {
+        padding: 5px 20px;
+        background: #050505bb;
+        justify-content: right;
+        align-items: center;
+    }
+    .home-page header .logo-image, .logo-image{
+        width: 80%; /* Adjusting logo size for smaller screens*/
+    }
+    /* No more down button */
+    .home-page .down-container{
+        display: none;
+    }
+    /* Removing menu buttons, adjusting styles to fit in a box for the drop down */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+
+        position: absolute;
+        top: 2vh;
+        right: 15vw;
+
+        padding: 1vh 2vw;
+        border-radius: 5px;
+
+        background: #222222eb;
+        box-shadow: 1.6px 3.2px 3.2px hsl(0deg 0% 0% / 0.45);
+    }
+    .nav-links li, .footer-nav-links li {
+        margin: 0.3vh 0;
+    }
+    .nav-links a, .footer-nav-links a{
+        border: none;
+        margin: 0;
+        background-color: #ffffff00;
+    }
+    /* Now the menu dropdown is displayed*/
+    .menu-toggle {
+        display: block;
+        margin-right: 10vw;
+
+    }
+    /* ============================================================================================================ */
+    /* MAIN */
+    /* ============================================================================================================ */
+    .content{
+        padding: 30px 20px;
+    }
+    #main-content{
+        max-width: 100%;
+    }
+    .bullet-container{
+        max-width: 100%;
+    }
+    /* ============================================================================================================ */
+    /* FOOTER */
+    /* ============================================================================================================ */
+    #footer-content{
+        display: flex;
+        flex-direction: column;
+    } 
+    .footer-section{
+        width: 95%;
+    }
+    .contact-form{
+        max-width: 100%;
+    }
+    .submit-text-container{
+        min-width: 30%;
+        max-width: 50%;
+    }    
+}
+
+
+
+
+
+/* Custom Scroll Bar*/
+::-webkit-scrollbar {
+    width: .5vw;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    background: #00000020;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    border-radius: 1vh;
+    cursor: pointer;
+    background: #09090950;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #696969;
+}  
