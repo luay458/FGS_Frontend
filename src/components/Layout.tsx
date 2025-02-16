@@ -2,10 +2,10 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import ContactForm from "./ContactForm";
+import Dropdown from './Dropdown';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const location = useLocation();
-  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <div className={location.pathname === "/" ? "home-page" : ""}>
