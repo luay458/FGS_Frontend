@@ -8,8 +8,8 @@ import OurResponsibility from './pages/OurResponsibility';
 import QualityAssurance from './pages/QualityAssurance';
 import Services from './pages/Services';
 // CSS
-import './styles/fonts.css';
-import './styles/styles.css';
+import "./styles/fonts.css";
+import "./styles/styles.css";
 
 
 function App() {
