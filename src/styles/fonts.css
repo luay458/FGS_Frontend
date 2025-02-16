@@ -2,9 +2,9 @@
 /* ============================================================================================================ */
 /* GENERAL FONTS*/
 /* ============================================================================================================ */
-body, html, button, a, input, textarea{
+body, html, button, a, input, textarea, .bullets, .simple-bullets{
     font-weight: 300;
-    color: #000000;
+    color: #9699a6; /* Light mode black*/
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 .nav-links a, .footer-nav-links a, .menu-toggle, footer {
@@ -21,9 +21,12 @@ body, html, button, a, input, textarea{
 }
 .nav-links a , .footer-nav-links a {
     text-decoration: none;
-    font-size: 1.2vw;
+    font-size: 1.5em
 } .nav-links a:hover, .footer-nav-links a:hover {
-    color: #bfbcaca4;
+    color: #ffffff90;
+}
+.footer-nav-links {
+    font-size: 0.9em;
 }
 .menu-toggle {
     font-size: 0.8vw;
@@ -71,7 +74,7 @@ h5 {
     font-size: 0.9em;
 }
 input, textarea {
-    font-weight: 500;
+    font-weight: 400;
 }
 p.thanks-msg{
     font-size: 0.9em !important;
@@ -83,9 +86,9 @@ p.thanks-msg{
     /* HEADER*/
     /* ============================================================================================================ */
     .nav-links a, .footer-nav-links a{
-        font-size: 0.9em;
+        font-size: 1.3em;
+        font-weight: 400;
     }.nav-links a:hover, .footer-nav-links a:hover {
-        font-size: 0.9em;
         border: none !important;
     }
     .menu-toggle {
@@ -97,19 +100,19 @@ p.thanks-msg{
     /* MAIN */
     /* ============================================================================================================ */
     h2 {
-        font-weight: 450;
+        font-weight: 350;
         font-size: 1.5em;
     } 
     p {
-        font-weight: 400;
+        font-weight: 300;
         font-size: 1em;
     }
     .smaller{
-        font-weight: 400;
+        font-weight: 300;
         font-size: 1em;
     }
     .bullet-container {
-        font-weight: 450;
+        font-weight: 350;
         font-size: 0.8em;
     }
     .areas-covered-container {
@@ -138,5 +141,8 @@ p.thanks-msg{
     } 
     .footer-text {
         font-size: 0.8em;
+    }
+    textarea {
+        font-weight: 300;
     }
 }

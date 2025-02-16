@@ -3,9 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
+    "dev": "vite --host 192.168.86.248",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {

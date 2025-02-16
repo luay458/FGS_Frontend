@@ -13,6 +13,11 @@ body, html {
 header, footer {
     z-index: 10; /* Make sure the header and footer are always above everything else */
 }
+/* Remove phone highlighting and outlining on buttons */
+button, button:focus, a, a:focus, input, textarea, select {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
 
 /* ============================================================================================================ */
 /* HEADER AND FOOTER */
@@ -20,6 +25,7 @@ header, footer {
 header {
     /* Making sure the header stays on top of the screen with position and z-index */
     position: sticky;
+    width: 100vw;
     top: 0;
     left: 0;
     z-index: 100; 
@@ -50,7 +56,7 @@ header {
 }
 /* When on the home page, navbar will take up the entire screen height */
 .home-page header .navbar {
-    height: calc(75vh - 20px); /* Calculations are to account for the down button container and padding of the navbar */
+    /*height: calc(75vh - 20px);  Calculations are to account for the down button container and padding of the navbar */
     box-shadow: none;
 }
 /* ===================================================== */
@@ -64,10 +70,10 @@ header {
 .homelink{
     cursor: pointer; /* The logo image links to home, cursor should point to show this */
 }
-/* Larger logo on the homepage (top left homelink) */
+/* Larger logo on the homepage (top left homelink) 
 .home-page header .logo-image {
     width: 25vw; 
-}
+}*/
 /* When on every page other than home, it's smaller */
 .logo-image{
     width: 18vw;
@@ -187,6 +193,7 @@ footer {
 }
 /* ===================================================== */
 /* Text Input customization */
+
 .footer input, .footer textarea {
     width: 100%;
     padding: 5px;
@@ -203,11 +210,14 @@ footer {
     
     border: none;
     border-radius: 5px;
-    background: #ff6600;
-    box-shadow: 6px 6px 12.6px hsl(0deg 0% 0% / 0.90);
-}
-.footer button:hover {
-    background: #cc550074;
+    background: #11516868;
+    box-shadow: 3px 3px 6px hsl(0deg 0% 0% / 0.60);
+} .footer button:hover {
+    background: #11516898;
+} .footer button:active {
+    padding: 9.5px;
+    outline: none;
+    box-shadow: 2px 2px 3px hsl(0deg 0% 0% / 0.60) inset;
 }
 .thanks-msg-container {
     display: none;
@@ -293,6 +303,8 @@ footer {
     flex: 1; /* Expand size to fill remaining area*/
     
     padding: 80px 20px 150px;
+    background-color: #11101c5f;
+    
     box-shadow: 3px 0px 4px hsl(0deg 0% 0% / 0.54) inset;
 }
 /* ===================================================== */
@@ -312,7 +324,7 @@ footer {
     padding: 2% 4%;
     
     border-radius: 5px;
-    background-color: #0c0c0c07;
+    background-color: #115168df;
     box-shadow: rgba(0, 0, 0, 0.4) 3px 4px 8px;
 }
 /* ===================================================== */
@@ -323,9 +335,9 @@ footer {
 
     border-radius: 3px;
 
-    color: #3a3a3a;
-    background-color: #aeb6bc5c;
     box-shadow: 1.8px 3.7px 3.7px hsl(0deg 0% 0% / 0.44);
+} .main.title-container, .bullets {
+    background-color: #115168df;
 }
 /* ===================================================== */
 /* Container for all bullet points */
@@ -342,8 +354,6 @@ footer {
     border-radius: 3px;
     padding: 5px;
 
-    color: #3a3a3a;
-    background-color: #aeb6bc5c;
     box-shadow: 2px 3px 5px hsl(0deg 0% 0% / 0.33) inset;
 }
 li {
@@ -431,7 +441,10 @@ li {
     .submit-text-container{
         min-width: 30%;
         max-width: 50%;
-    }    
+    }
+    .footer button {
+        width: max-content;
+    }
 }
 
 
