@@ -107,8 +107,10 @@ header {
     border-color: #4a4a4a93;
     background-color: #dbcbcb2e; /* Background color for header menu buttons only */
 } 
+.nav-button.active {
+    border-bottom: 2px solid #fff; /* White bottom border */
+}
 .footer-nav-links a{
-    border-style: none;
     background-color: #00000000;
 }
 /* Separator for footer nav buttons - e.g " Home | Services | About Us" */
@@ -488,5 +490,8 @@ li {
 
     .menu-toggle {
         display: block;
+    } 
+    .menu-toggle:active {
+        box-shadow: 2px 2px 3px hsl(0deg 0% 0% / 0.60) inset;
     }
 }
