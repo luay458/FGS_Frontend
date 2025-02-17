@@ -14,7 +14,7 @@ header, footer {
     z-index: 10; /* Make sure the header and footer are always above everything else */
 }
 /* Remove phone highlighting and outlining on buttons */
-button, button:focus, a, a:focus, input, textarea, select {
+button, button:focus, a, a:focus, input, textarea, select, .menu-toggle {
     outline: none;
     -webkit-tap-highlight-color: transparent;
 }
@@ -468,19 +468,23 @@ li {
 
 /* Responsive Styles */
 @media screen and (orientation: portrait) {
+    body, html {
+        overflow-x: hidden;
+    }
+
     .nav-links {
-        display: none;
+        display: flex;
         flex-direction: column;
         width: 200px;
         background-color: #333;
-        position: absolute;
+        position: fixed;
         top: 70px; /* Adjust based on your header height */
-        right: 20px;
+        right: -100vw;
+        transition: right 0.3s ease;
     }
 
     .nav-links.open {
-        display: flex;
-        z-index: 1000;
+        right: 20px;
     }
 
     .nav-links li {
