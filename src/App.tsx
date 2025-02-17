@@ -11,7 +11,6 @@ import Services from './pages/Services';
 import "./styles/fonts.css";
 import "./styles/styles.css";
 
-
 function App() {
   return (
     <Router>

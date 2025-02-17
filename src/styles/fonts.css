@@ -4,11 +4,14 @@
 /* ============================================================================================================ */
 body, html, button, a, input, textarea, .bullets, .simple-bullets{
     font-weight: 300;
-    color: #9699a6; /* Light mode black*/
+    color: var(--font-1);
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-.nav-links a, .footer-nav-links a, .menu-toggle, footer {
-    color: #ffffff;
+.nav-links a, .footer-nav-links a, .menu-toggle, footer, button {
+    color: var(--font-2);
+}
+button:hover, #theme-toggle:hover{
+    color: var(--font-2-hover);
 }
 
 /* ============================================================================================================ */
@@ -21,9 +24,9 @@ body, html, button, a, input, textarea, .bullets, .simple-bullets{
 }
 .nav-links a , .footer-nav-links a {
     text-decoration: none;
-    font-size: 1.5em
+    font-size: 1.3em
 } .nav-links a:hover, .footer-nav-links a:hover {
-    color: #ffffff90;
+    color: var(--font-3);
 }
 .footer-nav-links {
     font-size: 0.9em;
@@ -83,11 +86,11 @@ p.thanks-msg{
     /* HEADER*/
     /* ============================================================================================================ */
     .nav-links a{
-        font-size: 1em;
+        font-size: 1.3em;
         font-weight: 300;
     }
     .footer-nav-links a {
-        font-size: 1.5em;
+        font-size: 1em;
         font-weight: 300;     
     }
     .nav-links a:hover, .footer-nav-links a:hover {

@@ -1,18 +1,63 @@
 /* ============================================================================================================ */
+/* THEME VARIABLES */
+/* ============================================================================================================ */
+/* In light mode (:root), we define colors that suit a light appearance.
+   In dark mode ([data-theme="dark"]), we preserve your original dark colors.
+   You can adjust the light-mode variables to suit your desired aesthetic.
+*/
+:root {
+    --background-color: #11101c00;
+    --header-overlay: #050505b4;
+    --content-bg: #11101c5f;
+    --main-content-bg: #115168df;
+    --nav-hover-border: #4a4a4a93;
+    --nav-hover-bg: #dbcbcb2e;
+    --menu-bg: #333;
+    --footer-bg: #1a1a1a;
+    --input-bg: #9fb6c4ec;
+    --footer-button-color: #11516868;
+    --footer-button-color-hover: #80bcdd9d;
+    --inner-container-color: #0e44574d;
+    --font-1: #9699a6;
+    --font-2: #ececec;
+    --font-3: #ffffff90;
+    --font-2-hover: #b8b8b8;
+}
+[data-theme="light"] {
+    --background-color: #ffffff00;              /* Body, html background */
+    --header-overlay: #19181e97;    /* Header/footer overlay (light) */
+    --content-bg: rgba(244, 244, 244, 0.89);        /* Content background (light) */
+    --main-content-bg: #cbe9f471;                 /* Main content container background (light blue) */
+    --nav-hover-border: rgba(0, 0, 0, 0.57);
+    --nav-hover-bg: rgba(255, 255, 255, 0.18);
+    --menu-bg: #70ADC2;
+    --footer-bg: #7bc0d9df;
+    --input-bg: #ffffffaa;
+    --footer-button-color: rgba(176, 214, 228, 0.551);
+    --footer-button-color-hover: rgba(118, 142, 151, 0.334);
+    --inner-container-color: #ffffff14;
+    --font-1: #1d1e27ee;
+    --font-2: #efefef;
+    --font-3: #00000090;
+    --font-2-hover: #e7c9c9;
+}
+
+/* ============================================================================================================ */
 /* GENERAL STYLES */
 /* ============================================================================================================ */
 body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    
     display: flex;
     flex-direction: column;
+    background-color: var(--background-color);
+}
 
-}
 header, footer {
-    z-index: 10; /* Make sure the header and footer are always above everything else */
+    z-index: 10;
 }
+
 /* Remove phone highlighting and outlining on buttons */
 button, button:focus, a, a:focus, input, textarea, select, .menu-toggle {
     outline: none;
@@ -23,123 +68,111 @@ button, button:focus, a, a:focus, input, textarea, select, .menu-toggle {
 /* HEADER AND FOOTER */
 /* ============================================================================================================ */
 header {
-    /* Making sure the header stays on top of the screen with position and z-index */
     position: sticky;
     width: 100vw;
     top: 0;
     left: 0;
-    z-index: 100; 
-    /* Background Image*/
+    z-index: 100;
     background-image: url("../images/backgroundImage.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
-/* ===================================================== */
-/* Ensures both containers have the same overlay to look seamless */
+
 .navbar, .down-container {    
-   /* Color and blur will overlay the bg image which is in header */
-   background: #050505b4;
+   background: var(--header-overlay);
    backdrop-filter: blur(2px);
 }
-/* Navbar is the container that holds everything on the top of the screen */
+
 .navbar {
- 
     display: flex;
     align-items: baseline;
-
     transform: translateY(0) scale(1);
     height: auto;
     padding: 10px;
-
     box-shadow: 1.8px 3.7px 3.7px hsl(0deg 0% 0% / 0.44);
 }
-/* When on the home page, navbar will take up the entire screen height */
-.home-page header .navbar {
-    /*height: calc(75vh - 20px);  Calculations are to account for the down button container and padding of the navbar */
+
+/* .home-page header .navbar {
     box-shadow: none;
-}
-/* ===================================================== */
-/* Container that holds the logo and navigation buttons, row is to ensure they stay side by side not stacked on top */
-/* ===================================================== */
-.nav-container{
+}*/
+
+.nav-container {
     width: -webkit-fill-available;
 }
-/* Container that holds the logo */
-.homelink{
-    cursor: pointer; /* The logo image links to home, cursor should point to show this */
+
+.homelink {
+    cursor: pointer;
 }
-/* Larger logo on the homepage (top left homelink) 
-.home-page header .logo-image {
-    width: 25vw; 
-}*/
-/* When on every page other than home, it's smaller */
-.logo-image{
+
+.logo-image {
     height: 10vh;
 }
-/* ===================================================== */
-/* The navigation menu buttons container for the header and footer in their respective order */
-/* ===================================================== */
+
 .nav-links, .footer-nav-links {
     display: flex;
-    align-items: end;
-
+    align-items: baseline;
     list-style: none;
-    /* Removing default margins and padding from ul*/
     padding: 0;
     margin: 0;
 }
-.nav-links{
+
+.nav-links {
     justify-content: end;
 }
-.footer-nav-links{
+
+.footer-nav-links {
     justify-content: center;
     width: 100%;
 }
-/* The navigation menu buttons for the header and footer in their respective order */
-.nav-links a , .footer-nav-links a {
+
+.nav-links a, .footer-nav-links a {
     margin: 0px 5px;
     padding: 3px 5px;
-
     border-radius: 3px;
+    text-decoration: none;
 }
+
 .nav-links a:hover {
-    border-color: #4a4a4a93;
-    background-color: #dbcbcb2e; /* Background color for header menu buttons only */
-} 
+    border-color: var(--nav-hover-border);
+    background-color: var(--nav-hover-bg);
+}
+
 .nav-button.active {
-    border-bottom: 2px solid #fff; /* White bottom border */
+    border-bottom: 2px solid var(--font-2);
 }
-.footer-nav-links a{
-    background-color: #00000000;
+
+.footer-nav-links a {
+    background-color: transparent;
 }
-/* Separator for footer nav buttons - e.g " Home | Services | About Us" */
+
 ul.footer-nav-links li:not(:last-child)::after {
     content: "|";
     margin-right: 1px; 
     font-size: 1.5em;
 }
-/* Create a pseudo-element that will serve as the animated underlined border - will only begin animation on hover */
+
 .nav-button::after {
     content: "";
     position: absolute;
     left: 50%;
     bottom: 0;
-    transform: translateX(-50%) scaleX(0); /* Start with scale 0, centered horizontally */
-    transform-origin: center; /* Expand from center */
-    width: 100%; /* Full width */
-    height: 2px; /* Adjust thickness as desired */
-    background-color: #fff; /* Border color */
-    transition: transform 0.3s ease; /* Adjust timing and easing as needed */
+    transform: translateX(-50%) scaleX(0);
+    transform-origin: center;
+    width: 100%;
+    height: 2px;
+    background-color: var(--font-2);
+    transition: transform 0.3s ease;
 }
-/* On hover, animate the pseudo-element to scale to full width */
+
 .nav-button:hover::after {
     transform: translateX(-50%) scaleX(1);
 }
+
 .nav-button {
-    position: relative; /* Makes sure the animation sticks to the button itself */
-}  
-/* Phone only - hide the menu buttons and instead display a dropdown */
+    position: relative;
+}
+
 .menu-toggle {
     display: none;
     background: none;
@@ -147,151 +180,125 @@ ul.footer-nav-links li:not(:last-child)::after {
     border-radius: 5px;
     background: #11516868;
     box-shadow: 3px 3px 6px hsl(0deg 0% 0% / 0.60);
-    background-color: #333;
+    background-color: var(--menu-bg);
     cursor: pointer;
 }
-/* ===================================================== */
-/* Footer Only */
-/* ===================================================== */
-/* Centers All Containers in the footer*/
+
+/* ============================================================================================================ */
+/* FOOTER ONLY */
+/* ============================================================================================================ */
 footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
+
 .footer {
-    background: #1a1a1a;
+    background: var(--footer-bg);
     padding: 20px;
     text-align: center;
 }
-/* The container in footer - below the footer nav buttons */
+
 .footer .container {
     display: flex;
     justify-content: space-between;
 }
-/* ===================================================== */
-/* Each section in the footer container takes up half of the container's width - change if # items increases*/
+
 .footer-section {
     width: 50%;
 }
-/* Contact Form */
+
 .footer form {
     display: flex;
 }
-.contact-form{
+
+.contact-form {
     max-width: 90%;
 }
-/* Separate stacked container of the name, email, and submit button */
-.submit-text-container{
+
+.submit-text-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     min-width: 30%;
     max-width: 40%;
     margin-left: 10px;
 }
-/* ===================================================== */
-/* Text Input customization */
 
+/* ============================================================================================================ */
+/* TEXT INPUT CUSTOMIZATION */
 .footer input, .footer textarea {
     width: 100%;
     padding: 5px;
     margin: 5px;
-
     border: none;
     border-radius: 5px;
-    box-shadow: 2px 4px 5px hsl(0deg 0% 0% / 0.40) inset;
+    background-color: var(--input-bg);
+    box-shadow: 2px 2px 6px hsl(0deg 0% 0% / 0.60) inset;
 }
-/* Submit button*/
-.footer button {
+
+.footer button, #theme-toggle {
     padding: 10px;
     cursor: pointer;
-    
     border: none;
     border-radius: 5px;
-    background: #11516868;
+    background: var(--footer-button-color);
     box-shadow: 3px 3px 6px hsl(0deg 0% 0% / 0.60);
-} .footer button:hover {
-    background: #11516898;
-} .footer button:active {
+}
+
+.footer button:hover, #theme-toggle:hover {
+    background: var(--footer-button-color-hover);
+}
+
+.footer button:active, #theme-toggle:active {
     padding: 9.5px;
     outline: none;
     box-shadow: 2px 2px 3px hsl(0deg 0% 0% / 0.60) inset;
 }
+
 .thanks-msg-container {
     display: none;
-} .thanks-msg-container.submit{
+}
+.thanks-msg-container.submit {
     display: flex;
 }
+
 @keyframes fadeInOut {
     0% { opacity: 0; }
     10%, 80% { opacity: 1; }
     100% { opacity: 0; }
 }
-/* ===================================================== */
-/* Down button image only*/
-/* ===================================================== */
-/* Container which holds the down button, takes up the remaining bottom of the screen left by header, only shows at home */
-.down-container{
-    display: none; /* Default display until home is selected */
+
+/* ============================================================================================================ */
+/* DOWN BUTTON IMAGE */
+/* ============================================================================================================ */
+.down-container {
+    display: none;
     justify-content: center;
     align-items: center;
-
     height: 20vh;
-    padding: 5vh 5vh 0 0 ;
+    padding: 5vh 5vh 0 0;
 }
-/* Show down-container on the home page */
+
 .home-page .down-container {
     display: flex;
 }
-/* The down button image, below are the animations and size of the image */
-.down-image{
+
+.down-image {
     cursor: pointer;
     width: 5%;
-}
-@keyframes bounceAnimation {
-    0% {
-      transform: translateY(0);
-    }
-    70% {
-        transform: translateY(0);
-    }
-    78% {
-      transform: translateY(-20px); /* bounce up */
-    }
-    86% {
-      transform: translateY(0);
-    }
-    92% {
-      transform: translateY(-20px); /* second bounce up */
-    }
-    100% {
-      transform: translateY(0);
-    }
-}
-.down-image {
     animation: bounceAnimation 5s infinite;
 }
 
-/* Thanks for contacting 
-#message-bubble {
-    position: absolute;
-    bottom: 120%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #dff0d8;
-    color: #3c763d;
-    padding: 10px 15px;
-    border: 1px solid #d6e9c6;
-    border-radius: 5px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    z-index: 100;
-    opacity: 0;
-    animation: fadeInOut 5s forwards;
+@keyframes bounceAnimation {
+    0% { transform: translateY(0); }
+    70% { transform: translateY(0); }
+    78% { transform: translateY(-20px); }
+    86% { transform: translateY(0); }
+    92% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
 }
-*/
 
 /* ============================================================================================================ */
 /* MAIN CONTENT */
@@ -300,69 +307,60 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    flex: 1; /* Expand size to fill remaining area*/
-    
+    flex: 1;
     padding: 80px 20px 150px;
-    background-color: #11101c5f;
-    
+    background-color: var(--content-bg);
     box-shadow: 3px 0px 4px hsl(0deg 0% 0% / 0.54) inset;
 }
-/* ===================================================== */
-/* Main Content Container */
-#main-content{
+
+#main-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     min-width: 40vw;
     max-width: 60vw;
-
     min-height: 20vw;
     max-height: 100%;
-    
     padding: 2% 4%;
-    
     border-radius: 5px;
-    background-color: #115168df;
+    background-color: var(--main-content-bg);
     box-shadow: rgba(0, 0, 0, 0.4) 3px 4px 8px;
 }
-/* ===================================================== */
-/* Container for titles*/
-.title-container{
+
+.title-container {
     margin: 20px 0;
     padding: 5px;
-
     border-radius: 3px;
-
     box-shadow: 1.8px 3.7px 3.7px hsl(0deg 0% 0% / 0.44);
-} .title-container, .bullets, .simple-bullets {
-    background-color: #0e44574d;
 }
-/* ===================================================== */
-/* Container for all bullet points */
-.bullet-container{
+
+.bullet-container {
     max-width: 80%;
     justify-content: center;
-    list-style:inside;
+    list-style: inside;
     padding: 0;
     margin: auto;
 }
-/* Each bullet point*/
-.bullets, .simple-bullets{
+
+.bullets, .simple-bullets {
     margin-bottom: 30px;
     border-radius: 3px;
     padding: 5px;
-
     box-shadow: 2px 3px 5px hsl(0deg 0% 0% / 0.33) inset;
 }
+
+.title-container, .bullets, .simple-bullets {
+    background-color: var(--inner-container-color);
+}
+
 li {
     margin-bottom: 2.5%;
 }
 
-
-
+/* ============================================================================================================ */
+/* RESPONSIVE STYLES (Portrait) */
+/* ============================================================================================================ */
 /* Hide nav links on small screens */
 @media screen and (orientation: portrait) {
     /* ============================================================================================================ */
@@ -374,7 +372,6 @@ li {
     }
     .navbar {
         padding: 5px 20px;
-        background: #050505bb;
         align-items: center;
     }
     /* No more down button */
@@ -443,28 +440,24 @@ li {
     }
 }
 
-
-
-
-
-/* Custom Scroll Bar*/
+/* ============================================================================================================ */
+/* CUSTOM SCROLL BAR */
+/* ============================================================================================================ */
 ::-webkit-scrollbar {
-    width: .5vw;
+    width: 0.5vw;
 }
-/* Track */
 ::-webkit-scrollbar-track {
     background: #00000020;
 }
-/* Handle */
 ::-webkit-scrollbar-thumb {
     border-radius: 1vh;
     cursor: pointer;
     background: #09090950;
 }
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #696969;
-}  
+}
+
 
 /* Responsive Styles */
 @media screen and (orientation: portrait) {
@@ -476,11 +469,12 @@ li {
         display: flex;
         flex-direction: column;
         width: 200px;
-        background-color: #333;
+        background-color: var(--menu-bg);
         position: fixed;
         top: 70px; /* Adjust based on your header height */
         right: -100vw;
         transition: right 0.3s ease;
+        box-shadow: 8px 8px 8.2px hsl(0deg 0% 0% / 0.45);
     }
 
     .nav-links.open {
